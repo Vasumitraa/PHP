@@ -18,7 +18,7 @@ echo "<br>";
 
 // 1.2 - A la volée :
 $tab4 = [];
-$tab5 = [36, "Cathleen", true, []];
+$tab5 = [36, "Cathleen", false, []];
 
 // 2 -  Récupération d'une donnée dans le tableau :
 echo "<p> " . $tab3[1] . "</p>";
