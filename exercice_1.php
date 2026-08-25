@@ -1,11 +1,11 @@
 <?php
 // créer un tableau vide :
-$entiers = [];
+$entier = [];
 // créer une boucle qui va afficher 50 nombres aléatoires dans le tableau :
 for ($nombre = 0; $nombre < 50; $nombre++){
-    $entiers[$nombre] = rand (0,50);
+    $entier[$nombre] = rand (0,50);
 }
-print_r($entiers)
+print_r($entier)
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +16,8 @@ print_r($entiers)
     <title>Document</title>
 </head>
 <body>
-    <?php foreach($tab as $value) : ?>
+    <?php foreach($entier as $value) : ?>
     <p> <?= $value ?></p>
-        <?php endforeach ?>
+    <?php endforeach ?>
 </body>
 </html>
