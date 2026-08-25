@@ -64,6 +64,120 @@ echo "Personne.nom " . $personne1["nom"] . "<br>";
 echo "Personne.role " . $personne1["role"] . "<br>";
 echo "Personne.actif " . $personne1["actif"] . "<br>";
 
-// 5. Argumets nommés :
+// 5. Arguments nommés :
 $personne3 = creerUtilisateur('Morre', actif: true);
 $personne4 = creerUtilisateur(actif: true, nom: "Albert", role: 'admin');
+
+// 6. Passage par valeur VS référence :
+
+class Voiture {
+    public string $couleur;
+}
+
+function passageParValeur(int $a): void{ // "$a" ? "$nb" ? 
+echo "<p>[passageParValeur a: $a</p>"; // 5
+$a++;
+echo "<p>[passageParValeur a: $a</p>"; // 6
+}
+
+// ATTENTION ! Pour passer les tableaux par référence, utilisez l'opérateur de référence: &
+function passageParReferenceTableau(array &$tab): void {
+    echo "<p>[passageParReferenceTableau] tab: " . implode(", ", $tab) . "</p>"; // 0
+    $tab[0] = 42;
+    echo "<p>[passageParReferenceTableau] tab: " . implode(", ", $tab) . "</p>"; //42
+}
+
+function passageParReferenceObjet(Voiture $voiture){
+    echo "<p>[passageParReferenceObjet] voiture couleur: " . $voiture->couleur . "<p>"; // rouge
+    $voiture->couleur = "blanc";
+    echo "<p>[passageParReferenceObjet] voiture couleur: " . $voiture->couleur . "<p>"; // blanc
+}
+
+$nb = 5;
+echo "<p>[main] nb: $nb</p>"; // 5 
+passageParValeur($nb);
+echo "<p>[main] nb: $nb</p>"; // 5
+
+$t = [0];
+echo "<p>[main] t: " . " </p>"; // 0
+passageParReferenceTableau($t);
+echo "<p>[main] t: " . " </p>"; // 42
+
+$v = new Voiture();
+$v->couleur = "rouge";
+
+echo "<p>[main] voiture couleur: " . $v->couleur . "</p>"; // rouge
+passageParReferenceObjet($v);
+echo "<p>[main] voiture couleur: " . $v->couleur . "</p>"; // blanc
+
+// 7. Fonctions variadiques (fonction avec un nombre indéfini de paramètres (rest operator)):
+function somme(float $default = 0, float ...$valeurs): float {
+    return array_sum($valeurs) + $default;
+}
+$resultat = somme(1, 2, 3); // 6
+$resultat = somme(); // 0
+
+// 8. Spread operator (...) :
+$t2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+$t3 = [0, $t2]; // ATTENTION ! => un tableau dans un tableau !
+$t4 = [0, ...$t2];
+
+$t2_copy = [...$t2];
+
+$t_somme = somme(0, ...$t2);
+
+// 9. Déstructuration :
+[$valeur1, $valeur2, /* valeur3 ignorée */ , $valeur4] = $t2; // $valeur1 = $t2[0];
+
+echo "<p>valeur1: $valeur1</p>";
+echo "<p>valeur2: $valeur2</p>";
+echo "<p>valeur4: $valeur4</p>";
+
+$personne = [
+    "nom" => "Pascal",
+    "prenom" => "Cathleen",
+    "date-naissance" => "1989-11-04",
+];
+
+['nom' => $nom, 'prenom' => $prenom, 'date-naissance' => $date_naissance] = $personne;
+echo "<p>Tu t'appelles $nom $prenom, né le $date_naissance</p>";
+
+// 10. Retour de type nullable :
+class Personne {
+    public int $id;
+    public string $prenom;
+
+    public function __construct(int $id, string $prenom){
+        $this
+    }
+}
+$personnes = [];
+
+function rechercheParId(Personne[] $personnes, int $id): Personne | null{
+    foreach($personnes as $p){
+        if ($p->id == $id) return $p;
+    }
+    return null;
+}
+
+$searched_person = rechercheParId($personnes, 1);
+print_r($searched_person);
+$searched_person = rechercheParId($personnes, 11);
+print_r($searched_person);
+
+// 11. Callback :
+function hasFirstLetter(Personne $element, string $letter): bool{
+    return strtolower($element->prenom[0]) == $letter;
+}
+function custom_filter (array $t){
+    $filtered = [];
+    foreach($array as $element){
+        if (hasFirstLetter($element, "L")){
+            array_push($filtered, $element);
+        }
+    }
+    return $filtered;
+}
+
+echo "<br>";
+print_r(custom_filter($personnes));
