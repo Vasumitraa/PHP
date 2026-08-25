@@ -1,7 +1,6 @@
 <?php
-/*
-Démonstration - Tableau
-*/
+
+// Démonstration - Tableau
 
 // 1 - Déclaration
 
@@ -11,8 +10,11 @@ $tab2 = array(5, 9, 4);
 $tab3 = array(36, "Cathleen", true, array());
 
 var_dump($tab1);
+echo "<br>";
 var_dump($tab2);
+echo "<br>";
 var_dump($tab3);
+echo "<br>";
 
 // 1.2 - A la volée :
 $tab4 = [];
