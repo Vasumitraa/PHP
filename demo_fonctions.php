@@ -148,12 +148,28 @@ class Personne {
     public string $prenom;
 
     public function __construct(int $id, string $prenom){
-        $this
+        $this->id = $id;
+        $this->prenom = $prenom;
     }
 }
-$personnes = [];
+$personnes = [
+    new Personne(1, "Quentin"),
+    new Personne(2, "Marie"),
+    new Personne(3, "Lucas"),
+    new Personne(4, "Emma"),
+    new Personne(5, "Nathan"),
+    new Personne(6, "Chloé"),
+    new Personne(7, "Hugo"),
+    new Personne(8, "Léa"),
+    new Personne(9, "Louis"),
+    new Personne(10, "Sarah"),
+];
 
-function rechercheParId(Personne[] $personnes, int $id): Personne | null{
+/**
+ * @param Personne[] $personnes Le tableau de personnes sur lequel on recherche
+ */
+
+function rechercheParId(array $personnes, int $id): Personne | null{
     foreach($personnes as $p){
         if ($p->id == $id) return $p;
     }
@@ -166,13 +182,18 @@ $searched_person = rechercheParId($personnes, 11);
 print_r($searched_person);
 
 // 11. Callback :
-function hasFirstLetter(Personne $element, string $letter): bool{
-    return strtolower($element->prenom[0]) == $letter;
+function hasFirstLetter(Personne $personne): bool{ // pourquoi un booléen ?
+    return strtolower($personne->prenom[0]) == "l"; // à quoi sert "strtolower" ici ?
 }
-function custom_filter (array $t){
+
+function hasEvenId(Personne $personne): bool{ // pourquoi un booléen ?
+    return $personne->id % 2 == 0;
+}
+
+function custom_filter (array $array, callable $compareFn){ // à détailler...
     $filtered = [];
     foreach($array as $element){
-        if (hasFirstLetter($element, "L")){
+        if ($compareFn($element)){
             array_push($filtered, $element);
         }
     }
@@ -180,4 +201,13 @@ function custom_filter (array $t){
 }
 
 echo "<br>";
-print_r(custom_filter($personnes));
+
+echo "<h2>Id pair:</h2>";
+foreach (custom_filter($personnes, "hasEventId") as $p){
+    $id = $p->id;
+    $prenom = $p->prenom;
+    echo "<li>$id: $prenom</li>";
+}
+
+echo "<h2>Commence par L:</h2>";
+foreach (custom_filter($personne))
