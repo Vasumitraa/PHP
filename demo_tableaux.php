@@ -22,17 +22,31 @@ $tab5 = [36, "Cathleen", false, []];
 
 // 2 -  Récupération d'une donnée dans le tableau :
 echo "<p> " . $tab3[1] . "</p>";
-echo "<p> " . $tab3[-3] . "</p>";
+echo "<p> " . $tab3[-3] . "</p>"; // index inconnu
 
 $tab3[-3] = 42;
 
 echo "<p> " . $tab3[-3] . " </p>"; // index connu
 
 // 3 - Initialisation d'un tableau avec une boucle :
+$jours = []; 
 
-// Récupérer 
-echo count($jours) . "<br>"; // 31
-echo count($dinner) . "<br>"; // 5
+ for ($jour = 1; $jour <= 31; $jour++){ // à détailler...
+    $jours[$jour] = rand(28, 38);
+ }
+
+ $dinner = []
+
+// Tableau associatif :
+    $dinner["lundi"] = "sandwich";
+    $dinner["mardi"] = "sandwich";
+    $dinner["mercredi"] = "sandwich";
+    $dinner["jeudi"] = "salade";
+    $dinner["vendredi"] = "sandwich";
+    
+// Récupérer le nombre d'éléments dans un tableau :
+echo "Jours: " . count($jours) . "<br>"; // 31
+echo "Dîner: " . count($dinner) . "<br>"; // 5
 
 // Vérifier si une valeur est dans le tableau :
 echo "Frites dans le tableau : " . in_array("frites", $dinner) . "<br>"; // ""
