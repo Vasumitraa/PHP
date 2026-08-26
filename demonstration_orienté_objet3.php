@@ -50,5 +50,5 @@ echo $accueil->resumer() . "<br>";
 $accueil->ajouterPlusieursVues();
 echo $accueil->resumer() . "<br>";
 
-$accueil->ajouterPlusieursVues(151);
+$accueil->ajouterPlusieursVues(150);
 echo $accueil->resumer() . "<br>";
