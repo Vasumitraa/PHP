@@ -55,7 +55,7 @@ class Avion extends Vehicule implements Roulant, Volant {
     }
 
     public function atterir(): string {
-        return "L'avion atterit sans se crasher."
+        return "L'avion atterit sans se crasher.";
     }
 }
 // $v = new Vehicule(""); // Imossible d'instancier une classe qui est abstraite (quelle est l'utilité ?)
@@ -82,7 +82,7 @@ $vehicule = [
         <h1>Désmontration 08 - Abstraction et interfaces</h1>
 
         <?php foreach($vehicules as $v): ?>
-            
+
             <p><?= $v->marque ?></p>
             <?php if ($v instanceof Scooter): ?>
                 <p><?= $v->couleur ?></p>
@@ -100,5 +100,7 @@ $vehicule = [
                 <?= $v->décoller() ?></p>
                 <?= $v->atterir() ?></p>
             <?php endif ?>
+        
+            <?php endforeach ?>
     </body>
-</html>
+    </html>
