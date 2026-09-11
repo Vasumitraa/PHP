@@ -42,7 +42,7 @@ class Avion extends Vehicule implements Roulant, Volant {
         return parent::__construct($marque);
     }
 
-    public abstract function demarrer(){
+    public function demarrer(){
         return "L'avion démarre.";
     }
 
