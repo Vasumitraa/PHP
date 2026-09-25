@@ -11,7 +11,12 @@ $routes = [
 'books' => [
     'file' => 'pages/books/read.php',
     'title' => 'Liste des livres',
-]
+],
+
+'book-details' => [
+    'file' => 'pages/books/read.php',
+    'title' => 'Liste des livres',
+],
 
 ];
 
