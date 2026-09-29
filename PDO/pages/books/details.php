@@ -22,10 +22,10 @@ if ($id !== false && $id !== null) {
                 JOIN auteur AS a ON l.auteur_id = a.id
             WHERE l.id = ?";
     
-    $request = $pdo->prepare($sql);
-    $request->execute([$id]);
+    $statement = $pdo->prepare($sql);
+    $statement->execute([$id]);
 
-    $livre = $request->fetch();
+    $livre = $statement->fetch();
 }
 
 ?>
