@@ -3,10 +3,12 @@
 // Gestion des routes : 
 $routes = [
 
-'' => [ // tabkeau associatif ?
+'' => [ // tableau associatif ?
     'file' => 'pages/home.php',
     'title' => 'Accueil',
 ],
+
+// Gestion des livres :
 
 'books' => [
     'file' => 'pages/books/read.php',
@@ -17,6 +19,12 @@ $routes = [
     'file' => 'pages/books/read.php',
     'title' => 'Liste des livres',
 ],
+
+// Gestion des auteurs :
+'authors' => [
+    'file' => 'pages/authors/authors-list.php',
+    'title' => 'Liste des auteurs',
+]
 
 ];
 
@@ -41,7 +49,7 @@ require_once 'config/database.php';
 // Assembler les pages :
 
 require_once 'partials/header.php';
-require_once $file;
+require_once $file; // contenu
 require_once 'partials/footer.php';
 
 ?>

@@ -13,11 +13,11 @@ $livres = $pdo->query($sql)->fetchAll();
 
 <p><?= count($livres) ?> livre(s)</p> <!--pas nécessaire dans mon projet-->
 
-<div class="cartes">
+<div class="cards">
 
 <?php foreach($livres as $livre) ?>
     
-<article class="carte">
+<article class="card">
     <h2><?= $livre["titre"] ?></h2>
 
     <div class="actions">

@@ -1,6 +1,6 @@
 <?php
 
-// Récupération de l'ID dans l'URL :$
+// Récupération de l'ID dans l'URL :
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
@@ -30,7 +30,7 @@ if ($id !== false && $id !== null) {
 
 ?>
 
-<?php if (!$livre) : ?> <!-- à détailler-->
+<?php if (!$livre) : ?>
 
     <h1>Livre introuvable</h1>
     <p>Aucun livre ne correspond à l'id <?= $id ?>.</p>
