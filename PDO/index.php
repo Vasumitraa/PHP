@@ -16,15 +16,19 @@ $routes = [
 ],
 
 'book-details' => [
-    'file' => 'pages/books/read.php',
-    'title' => 'Liste des livres',
+    'file' => 'pages/books/details.php',
+    'title' => 'Détails du livres',
 ],
 
 // Gestion des auteurs :
 'authors' => [
     'file' => 'pages/authors/authors-list.php',
     'title' => 'Liste des auteurs',
-]
+],
+'authors-details' => [
+    'file' => 'pages/authors/authors-details.php',
+    'title' => 'Détail de l\'auteur',
+],
 
 ];
 
@@ -47,6 +51,8 @@ $title = $route["title"];
 require_once 'config/database.php';
 
 // Assembler les pages :
+
+
 
 require_once 'partials/header.php';
 require_once $file; // contenu
