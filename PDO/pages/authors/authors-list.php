@@ -38,9 +38,9 @@ $authors = $pdo->query($sql)->fetchAll();
             <tr>
                 <td><?= htmlspecialchars($a["id"])?></td>
                 <td><?= htmlspecialchars($a["nom"])?> <?= htmlspecialchars($a["prenom"])?></td>
-                <td><a href="?page=author-details&amp;id=<?= $a["id"]?>"></a></td>
-                <td><a href="?page=author-edit&amp;id=<?= $a["id"]?>"></a></td>
-                <td><a href="?page=author-delete&amp;id=<?= $a["id"]?>"></a></td>
+                <td><a href="?page=author-details&amp;id=<?= $a["id"]?>">🔎</a></td>
+                <td><a href="?page=author-edit&amp;id=<?= $a["id"]?>">🖋️</a></td>
+                <td><a href="?page=author-delete&amp;id=<?= $a["id"]?>">🗑️</a></td>
             </tr>
 
         <?php endforeach ?>
