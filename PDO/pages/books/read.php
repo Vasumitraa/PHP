@@ -15,7 +15,7 @@ $livres = $pdo->query($sql)->fetchAll();
 
 <div class="cards">
 
-<?php foreach($livres as $livre) ?>
+<?php foreach($livres as $livre): ?>
     
 <article class="card">
     <h2><?= $livre["titre"] ?></h2>
@@ -26,6 +26,6 @@ $livres = $pdo->query($sql)->fetchAll();
 
 </article>
 
-<?php endforeach ?>
+<?php endforeach; ?>
 
 </div>
