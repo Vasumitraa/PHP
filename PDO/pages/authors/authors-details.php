@@ -4,6 +4,11 @@
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
+// Initialisation de l'auteur et de ses livres à false
+
+$author = false;
+$livres = false;
+
 // 2. Récupération des données de l'auteur :
 
 if ($id !== false && $id !== null) {
@@ -42,3 +47,33 @@ $sql = "SELECT
 }
 
 ?>
+
+<!-- Template -->
+
+<?php if (!$author) : ?>
+
+    <h1>Auteur introuvable.</h1>
+
+<?php else : ?>
+
+    <h1><?= htmlspecialchars($author["nom"]) ?> <?= htmlspecialchars($author["prenom"]) ?></h1>
+
+    <!-- dl>(dt+dd)*2 -->
+    <dl>
+        <dt>Nationalité :</dt>
+        <dd>
+            <?= htmlspecialchars($author["nationalite"]) ?></dd>
+        <dt>Liste de ses livres :</dt>
+        <dd>
+            <?php if (count($livres) === 0) :?>
+                <p>Aucun livre pour le moment.</p>
+            <?php else : ?>
+                <ul>
+                <?php foreach ($livres as $l) : ?>
+                  <li><a href="?page=book-details&amp;id=<?= $l["id"] ?>"><?= htmlspecialchars($l["titre"]) ?></a></li>  
+                <?php endforeach; ?>
+                </ul>
+            <?php endif ?>
+        </dd>
+    </dl>
+<?php endif ?>
