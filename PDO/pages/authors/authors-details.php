@@ -35,6 +35,10 @@ $sql = "SELECT
     $statement = $pdo->prepare($sql);
     $statement->execute([$id]);
 
+// Nous voulons récupérer TOUS les livres de l'auteur
+
+    $livres = $statement->fetchAll();
+
 }
 
 ?>
